@@ -1,70 +1,78 @@
 # Generador de contraseñas seguras
 
-# Importamos las librerías necesarias
-import secrets # Para la aleatoriedad
-import string # Para los caracteres
-import flet as ft # Para la GUI
+import secrets
+import string
+import flet as ft
 
-# La caja que guarda la Password
+# Caja que guarda la Password
 password_field = ft.TextField(
-        read_only=True,
-        width=1000,
-        text_align=ft.TextAlign.LEFT,
-        text_style=ft.TextStyle(
-            size=17, 
-            weight=ft.FontWeight.BOLD,
-            font_family="serif"
-            )
+    read_only=True,
+    width=1000,
+    text_align=ft.TextAlign.LEFT,
+    text_style=ft.TextStyle(
+        size=17,
+        weight=ft.FontWeight.BOLD,
+        font_family="serif"
     )
+)
 
-# Función Main
+def password_generation(length):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    return "".join(secrets.choice(characters) for i in range(length))
+
 def main(page: ft.Page):
-    
-    # El título
     page.title = "Password Generator"
-    title = ft.Text(
-        "Password Generator",
-        size=30,
-        weight=ft.FontWeight.BOLD)
 
-    # Generamos el slider
+    title = ft.Text("Password Generator", size=30, weight=ft.FontWeight.BOLD)
+
+    # Slider
     slider = ft.Slider(
         min=8,
         max=64,
         divisions=56,
         label="{value}",
-        value=12,
-        on_change=update_password
-        )
+        value=12
+    )
 
+    # Handler para cambios del slider
+    def on_slider_change(e):
+        password_field.value = password_generation(int(e.control.value))
+        page.update()
 
-    # Generamos el botón
-    button = ft.ElevatedButton("Generate Password", on_click=update_password)
+    # Handler para el botón
+    def on_generate_click(e):
+        password_field.value = password_generation(int(slider.value))
+        page.update()
 
-    # Añadimos a la interfaz todo para mostrarlo
+    # Handler para copiar al portapapeles
+    def on_copy_click(e):
+        # copiar
+        page.set_clipboard(password_field.value)
+        snack_bar = ft.SnackBar(ft.Text("Password Copied to the Clipboard"))
+        page.overlay.append(snack_bar)
+        snack_bar.open = True
+        page.update()
+
+    # Asignamos handlers
+    slider.on_change = on_slider_change
+    button = ft.ElevatedButton("Generate Password", on_click=on_generate_click)
+    copy_button = ft.ElevatedButton(
+        "Copy to Clipboard",
+        on_click=on_copy_click,
+        icon=ft.Icons.COPY
+    )
+
+    # Password de inicio
+    password_field.value = password_generation(int(slider.value))
+
+    # Añadimos todo a la interfaz
     page.add(
         title,
         password_field,
-        ft.Text("Password Lenght:", size=20, weight=ft.FontWeight.BOLD),
+        ft.Text("Password Length:", size=20, weight=ft.FontWeight.BOLD),
         slider,
-        button
-        )
-
-# Función para actualizar la contraseña
-def update_password(e):
-    password_field.value = password_generation(
-        int (e.control.value)
+        button,
+        copy_button
     )
-    e.page.update() # Actualizar solo el cambio
 
-# La función para generar la contraseña aleatoria
-def password_generation(length):
-
-    # Guardamos en una variable todos los tipos de caracteres que necesitamos
-    characters = string.ascii_letters + string.digits + string.punctuation
-
-    password = "".join(secrets.choice(characters) for i in range (length))
-    return password
-
-# Llamamos al Main
 ft.app(target=main)
