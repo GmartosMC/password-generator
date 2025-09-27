@@ -7,7 +7,7 @@ import flet as ft # Para la GUI
 
 # Función Principal
 def main():
-    long = imput("Type the number of characters Ej. 8")
+    long = input("Type the number of characters Ej. 8")
 
-def generate_password(long):
+# def generate_password(long):
 
