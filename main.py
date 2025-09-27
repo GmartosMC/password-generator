@@ -10,7 +10,7 @@ def main():
     # Preguntamos al usuario cuantos caracteres quiere
     long = int(input("Type the number of characters. Ej 8: "))
     password = password_generation(long)
-    print(password)
+    print(f"The password is: {password}")
 
 def password_generation(long):
 
