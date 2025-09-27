@@ -13,6 +13,9 @@ password_field = ft.TextField(
         text_style=ft.TextStyle(size=20, weight=ft.FontWeight.BOLD)
     )
 
+# El slider
+slider = ft.Slider(min=6, max=40, divisions=24, label="{value}", value=12)
+
 # Función Main
 def main(page: ft.Page):
     
@@ -24,7 +27,7 @@ def main(page: ft.Page):
     button = ft.ElevatedButton("Generate Password", on_click=update_password)
 
     # Añadimos a la interfaz todo para mostrarlo
-    page.add(title, password_field, button)
+    page.add(title, password_field, button, slider)
 
 # Función para actualizar la contraseña
 def update_password(e):
@@ -32,7 +35,7 @@ def update_password(e):
     e.page.update() # Actualizar solo el cambio
 
 # La función para generar la contraseña aleatoria
-def password_generation(length = 8):
+def password_generation(length):
 
     # Guardamos en una variable todos los tipos de caracteres que necesitamos
     characters = string.ascii_letters + string.digits + string.punctuation
