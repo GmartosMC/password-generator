@@ -5,9 +5,7 @@ import secrets # Para la aleatoriedad
 import string # Para los caracteres
 import flet as ft # Para la GUI
 
-# Función Principal
-def main():
-    long = input("Type the number of characters Ej. 8")
-
-# def generate_password(long):
+# Guardamos en una variable todos los tipos de caracteres que necesitamos
+characters = string.ascii_letters + string.digits + string.punctuation
+print(characters)
 
