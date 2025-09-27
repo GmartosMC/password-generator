@@ -55,11 +55,16 @@ def main(page: ft.Page):
 
     # Asignamos handlers
     slider.on_change = on_slider_change
-    button = ft.ElevatedButton("Generate Password", on_click=on_generate_click)
+    button = ft.ElevatedButton(
+        "Generate Password",
+        on_click = on_generate_click,
+        icon = ft.Icons.RESTART_ALT 
+        )
+
     copy_button = ft.ElevatedButton(
         "Copy to Clipboard",
-        on_click=on_copy_click,
-        icon=ft.Icons.COPY
+        on_click = on_copy_click,
+        icon = ft.Icons.COPY
     )
 
     # Password de inicio
