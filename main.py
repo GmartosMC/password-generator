@@ -14,7 +14,7 @@ password_field = ft.TextField(
     )
 
 # El slider
-slider = ft.Slider(min=6, max=40, divisions=24, label="{value}", value=12)
+slider = ft.Slider(min=8, max=64, divisions=56, label="{value}", value=12)
 
 # Función Main
 def main(page: ft.Page):
