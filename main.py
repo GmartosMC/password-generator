@@ -10,7 +10,7 @@ password_field = ft.TextField(
     width=1000,
     text_align=ft.TextAlign.LEFT,
     text_style=ft.TextStyle(
-        size=17,
+        size=20,
         weight=ft.FontWeight.BOLD,
         font_family="serif"
     )
@@ -56,7 +56,7 @@ def main(page: ft.Page):
     # Asignamos handlers
     slider.on_change = on_slider_change
     button = ft.ElevatedButton(
-        "Generate Password",
+        "Regenerate",
         on_click = on_generate_click,
         icon = ft.Icons.RESTART_ALT 
         )
