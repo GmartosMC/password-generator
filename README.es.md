@@ -1,6 +1,8 @@
 # Generador de Contraseñas
 [![English](https://img.shields.io/badge/English-blue.svg)](README.md) [![Español](https://img.shields.io/badge/Español-green.svg)](README.es.md)
 
+![project](img/project.png)
+
 ## Un generador de contraseñas creado con Python
 
 ### Instalación
@@ -14,7 +16,7 @@ git clone https://github.com/GmartosMC/password-generator
 Recomiendo crear un entorno virtual para no tener problemas con las dependencias. En la raiz del proyecto en terminal:
 
 ```
-python -m venv /ruta/al/entorno/virtual
+python -m venv entorno
 ```
 
 Para activarlo, en Windows en la raiz del proyecto usa:
