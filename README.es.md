@@ -16,19 +16,19 @@ git clone https://github.com/GmartosMC/password-generator
 Recomiendo crear un entorno virtual para no tener problemas con las dependencias. En la raiz del proyecto en terminal:
 
 ```
-python -m venv entorno
+python -m venv nombreEntorno
 ```
 
 Para activarlo, en Windows en la raiz del proyecto usa:
 
 ```
-venv\Scripts\activate
+nombreEntorno\Scripts\activate
 ```
 
 En Linux y Mac:
 
 ```
-source venv/bin/activate
+source nombreEntorno/bin/activate
 ```
 
 Este proyecto usa Flet para la GUI. Puedes simplemente instalar las dependencias con el siguiente comando dentro del proyecto:
@@ -41,4 +41,10 @@ O si quieres instalarlo manualmente:
 
 ```
 pip install flet
+```
+
+Para ejecutarlo, con la terminal en la raiz del proyecto, escribe:
+
+```
+flet run
 ```
